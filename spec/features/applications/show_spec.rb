@@ -91,8 +91,37 @@ RSpec.describe "Applications Show Page" do
       expect(page).to have_content("Status: Pending")
       expect(page).to_not have_content("Status: In-Progress")
       expect(page).to_not have_content("Garfield")
-      # expect(page).to_not have_field("rationale")
       expect(page).to_not have_field(:search)
+
+  end
+
+  it "can use partial letters to find pet name" do
+      visit "/applications/#{@application_1.id}"
+
+      expect(current_path).to eq("/applications/#{@application_1.id}")
+
+      within "#search-pet" do
+        fill_in :search, with: "Sco"
+        click_on "Search Pet Name"
+      end
+
+      expect(page).to have_content("Scooby")
+  end
+
+  it "can search for pets with case insenstive names" do
+    scooby_1 = @shelter.pets.create!(name: 'Scooby', age: 2, breed: 'Great Dane', adoptable: true, shelter_id: @shelter.id)
+    scooby_2 = @shelter.pets.create!(name: 'SCOObys', age: 2, breed: 'Great Dane', adoptable: true, shelter_id: @shelter.id)
+    scooby_3 = @shelter.pets.create!(name: 'Mr.ScOOby', age: 2, breed: 'Great Dane', adoptable: true, shelter_id: @shelter.id)
+    visit "/applications/#{@application_1.id}"
+
+    within "#search-pet" do
+      fill_in :search, with: "scooby"
+      click_on "Search Pet Name"
+    end
+
+    expect(page).to have_content("Scooby")
+    expect(page).to have_content("SCOObys")
+    expect(page).to have_content("Mr.ScOOby")
 
   end
 end
