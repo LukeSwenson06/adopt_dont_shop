@@ -32,14 +32,22 @@ RSpec.describe Shelter, type: :model do
       it 'returns partial matches' do
         expect(Shelter.search("Fancy")).to eq([@shelter_3])
       end
+    end
 
     describe '#reverse_alphabetical' do
       it 'returns all shelters in reverse alphabetical order' do
         expect(Shelter.reverse_alphabetical).to eq([@shelter_2, @shelter_3, @shelter_1])
       end
     end
-    end
 
+    describe '#pending_applications' do
+      it 'returns all shelter names with pending applications' do
+        scooby = @shelter_1.pets.create!(name: 'Scooby', age: 2, breed: 'Great Dane', adoptable: true)
+        application_1 = scooby.applications.create!(name: 'Shaggy', address: '2541 Spooky Lane', city: 'Coolsville', state: 'Ohio', zipcode: '12345', rationale: 'I want a best friend to eat Scooby snacks with', status: 'Pending')
+
+        expect(Shelter.pending_applications).to eq([@shelter_1])
+      end
+    end
     describe '#order_by_recently_created' do
       it 'returns shelters with the most recently created first' do
         expect(Shelter.order_by_recently_created).to eq([@shelter_3, @shelter_2, @shelter_1])
