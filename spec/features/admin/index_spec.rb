@@ -38,7 +38,6 @@ RSpec.describe do
     click_button "Submit Application"
 
     visit '/admin/shelters'
-    save_and_open_page
 
     within '#shelters-with-pending-applications' do
       expect(page).to have_content("Aurora shelter")
