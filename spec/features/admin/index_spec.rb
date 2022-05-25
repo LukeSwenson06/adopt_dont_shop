@@ -9,7 +9,7 @@ RSpec.describe do
 
   it 'can list shelters in reverse alphabetical order' do
     visit '/admin/shelters'
-save_and_open_page
+
     expect(@shelter_2.name).to appear_before(@shelter_3.name)
     expect(@shelter_3.name).to appear_before(@shelter_1.name)
     expect(@shelter_1.name).to_not appear_before(@shelter_2.name)
