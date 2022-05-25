@@ -91,7 +91,6 @@ RSpec.describe "Applications Show Page" do
       expect(page).to have_content("Status: Pending")
       expect(page).to_not have_content("Status: In-Progress")
       expect(page).to_not have_content("Garfield")
-      expect(page).to_not have_field(:search)
 
   end
 
