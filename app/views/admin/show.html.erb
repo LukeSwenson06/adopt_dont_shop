@@ -1,0 +1,21 @@
+<h1> Application Status </h1>
+
+<div id="application-<%= @application.id %>">
+  <p><b> Name</b> <%= @application.name %></p>
+  <p><b> Address:</b> <%= @application.address %>, <%=@application.city %>, <%=@application.state %>,<%=@application.zipcode %></p>
+  <p><b> Rationale</b> <%= @application.rationale %></p>
+  <p><b> Status:</b> <%= @application.status %></p>
+
+  <% @application.pets.each do |pet| %>
+    <% if @application_pet.status == nil %>
+    <%= button_to "Approve #{pet.name}", "/admin/applications/#{@application.id}?status=approved&pet_id=#{pet.id}", method: :patch, params: {status: "Approved"} %>
+    <%= button_to "Reject #{pet.name}", "/admin/applications/#{@application.id}?status=rejected&pet_id=#{pet.id}", method: :patch, params: {status: "Rejected"} %>
+    <% elsif @application_pet.status == "Approved" %>
+        Status: Approved
+    <% elsif @application_pet.status == "Rejected" %>
+        Status: Rejected
+    <% else %>
+        Status: Pending
+     <% end %>
+  <% end %>
+</div>
