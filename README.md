@@ -1,7 +1,9 @@
 # Adopt, don't Shop
 
 ### Existing database design
-![visual-schema.png](https://i.postimg.cc/0ywZgQ1W/visual-schema.png)
+
+![visual-schema.png] 
+cc/0ywZgQ1W/visual-schema.png)<img width="1413" alt="Screen Shot 2022-05-26 at 11 31 22 AM" src="https://user-images.githubusercontent.com/88849965/170521952-fcce0b96-0e8c-4e4f-a323-2c3b9396013f.png">
 
 ## Learning Goals
 
