@@ -423,3 +423,7 @@ Then next to each pet's name I see a link to the admin application show page whe
 ### Styling
 
 Implement a CSS Grid Framework to improve your styling, either [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) or [Bootstrap](https://getbootstrap.com/)
+
+### DTR
+
+https://docs.google.com/document/d/1YqSt0B7Ai2a1B1QuMe-ADsthnh_TF8JmOTKqXSKoZFg/edit?usp=sharing
